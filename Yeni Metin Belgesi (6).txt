@@ -1,0 +1,18 @@
+figure
+x = pi*[-24:24]/24;
+plot(x, sin(x))
+xlabel('radyan')
+ylabel('sinüs deðeri')
+title('Sinüs Grafiði')
+
+
+Bazen ayný figüre bir çizim yapmak yerine küçük pencereler halinde daha çok çizim yapmak isteyebiliriz. Bunun için de subplot imdadýmýza yetiþiyor. Kullaným: subplot(satýr_sayisi, sütun_sayisi, su_an_cizilecek_olanin_indisi)
+
+subplot(1, 2, 1)
+plot(x, sin(x))
+axis square
+title('Sin grafiði')
+subplot(1, 2, 2);
+plot(x, cos(x));
+axis square
+title('Cos grafiði')

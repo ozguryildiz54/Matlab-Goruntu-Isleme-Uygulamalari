@@ -1,0 +1,32 @@
+f=imread('C:\Users\Özgür\Desktop\tire.tif');
+n=3 %maske satýr boyutu
+m=3 %maske sütun boyutu
+w=ones(n,m);
+N=size(f,1)
+M=size(f,2)
+g=zeros(N,M)
+for x=1:N
+  for y=1:M
+     for a=-floor(n/2):floor(n/2)
+       for b=-floor(m/2):floor(m/2)
+           if(a<0)
+           k=-a
+           if(b<0)
+           l=-b
+           if(a==0)
+           k=0
+           if(b==0)
+           l=0
+           if(a>0)
+           k=a
+           if(b>0)
+           l=b
+          g(x,y)+=w(k,l)*f(x+a,y+b)           
+       end
+     end
+  end
+end
+
+g=g/9
+
+figure,imshow(uint8(g))

@@ -1,0 +1,49 @@
+f=imread('tire.tif');
+if(size(f,3)>1)
+f=rgb2gray(f);
+end
+M=15;
+N=25;
+[K,L]=size(f);
+piks_boy=K*L;
+figure,imshow(f);
+figure,imhist(f);
+f1=uint8(zeros(K,L));
+deger=zeros(256,1);
+deger2=zeros(256,1);
+for i=1:K
+	for j=1:L
+		k=f(ceil((i+4)/2),ceil((j+4)/2))+1;
+		deger(k)=(deger(k)+1);
+	end
+end
+
+top=0;
+
+for i=1:256
+	top=top+deger(i);
+	kum_olas(i)=top/piks_boy;
+	f1(i)=round(kum_olas(i)*255);
+end
+
+x=(0:1:255);
+for i=1:K
+	for j=1:L
+		f2(i,j)=f1(f(i,j)+1);
+	end
+end
+
+for i=1:K
+	for j=1:L
+		k=f2(ceil((i+4)/2),ceil((j+4)/2))+1;
+		deger2(k)=(deger2(k)+1);
+	end
+end
+
+
+
+figure,imshow(f2);
+figure,imhist(f2);
+
+figure,bar(x,deger2);
+axis([0 256 0 900]);

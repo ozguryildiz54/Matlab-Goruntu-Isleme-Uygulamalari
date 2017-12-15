@@ -1,0 +1,16 @@
+%Gaussian Gürültüsü Eklemek
+
+s=imread('tire.tif');
+d=imnoise(s,'gaussian');
+imshow(d);
+%Tuz-Biber gürültüsü Eklemek
+
+d=imnoise(s,'salt & pepper',0.25); 
+%Speckle gürültüsü eklemek
+
+f=imnoise(s,'speckle');
+
+
+
+figure,imshow(d)
+figure,imshow(f)

@@ -1,0 +1,20 @@
+f=imread('C:\Users\Özgür\Desktop\tire.tif');
+h=imread('C:\Users\Özgür\Desktop\tire2.tif');
+	
+g=f-h;
+
+k=min(min(g));
+
+N=size(g,1);
+
+M=size(g,2);
+
+if (k<0)
+g=g-k;
+
+l=max(max(g));
+
+if (l>255)
+g=(g*255)/l;
+
+figure,imshow(uint8(g));
